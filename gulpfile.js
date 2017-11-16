@@ -9,7 +9,7 @@ var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var browserSync = require('browser-sync');
 
-gulp.task('default', ['lib', 'sass-compile']);
+gulp.task('default', ['server', 'lib', 'sass-compile', 'script-compile', 'html-compile']);
 
 gulp.task('server', function(){
   browserSync.init({
@@ -26,7 +26,19 @@ gulp.task('sass-compile', ['watch'], function(){
   .pipe(gulp.dest('./dist/css'));
 });
 
-// unificando as libs
+// passando os scripts para o dist
+gulp.task('script-compile', function(){
+  gulp.src('./dev/js/*.js')
+  .pipe(gulp.dest('./dist/js'));
+});
+
+/* passando o html para o dist */
+gulp.task('html-compile', ['watch'], function(){
+  gulp.src('./dev/index.html')
+  .pipe(gulp.dest('./dist'));
+});
+
+// concatenando as libs
 gulp.task('lib', function(){
   return gulp.src(['./node_modules/angular/angular.min.js', './node_modules/jquery/dist/jquery.min.js'])
   .pipe(concat('lib.js'))
@@ -35,5 +47,6 @@ gulp.task('lib', function(){
 
 // aguardando modificações nos arquivos
 gulp.task('watch', function(){
-  gulp.watch('./dev/sass/main.scss', ['sass-compile']);
+  gulp.watch('./dev/sass/main.scss', ['sass-compile']).on('change', browserSync.reload);
+  gulp.watch('./dev/index.html', ['html-compile']).on('change', browserSync.reload);
 });
