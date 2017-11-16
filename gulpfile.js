@@ -9,7 +9,7 @@ var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var browserSync = require('browser-sync');
 
-gulp.task('default', ['server', 'lib', 'sass-compile', 'script-compile', 'html-compile']);
+gulp.task('default', ['server', 'lib', 'bootstrap', 'sass-compile', 'script-compile', 'html-compile', 'watch']);
 
 gulp.task('server', function(){
   browserSync.init({
@@ -20,29 +20,38 @@ gulp.task('server', function(){
 });
 
 // compilando sass para css
-gulp.task('sass-compile', ['watch'], function(){
+gulp.task('sass-compile', function(){
   gulp.src('./dev/sass/main.scss')
   .pipe(sass().on('error', sass.logError))
   .pipe(gulp.dest('./dist/css'));
 });
 
 // passando os scripts para o dist
-gulp.task('script-compile', ['watch'], function(){
+gulp.task('script-compile', function(){
   gulp.src('./dev/js/*.js')
   .pipe(gulp.dest('./dist/js'));
 });
 
 /* passando o html para o dist */
-gulp.task('html-compile', ['watch'], function(){
+gulp.task('html-compile', function(){
   gulp.src('./dev/index.html')
   .pipe(gulp.dest('./dist'));
 });
 
 // concatenando as libs
 gulp.task('lib', function(){
-  return gulp.src(['./node_modules/angular/angular.min.js', './node_modules/jquery/dist/jquery.min.js'])
+  return gulp.src(['./node_modules/angular/angular.min.js',
+                   './node_modules/jquery/dist/jquery.min.js',
+                   './node_modules/bootstrap/dist/js/bootstrap.min.js'])
   .pipe(concat('lib.js'))
   .pipe(gulp.dest('./dist/lib'));
+});
+
+gulp.task('bootstrap', function(){
+  gulp.src('./node_modules/bootstrap/dist/css/bootstrap.min.css')
+  .pipe(gulp.dest('./dist/css/bootstrap/css'));
+  gulp.src('./node_modules/bootstrap/dist/fonts/*.*')
+  .pipe(gulp.dest('./dist/css/bootstrap/fonts'));
 });
 
 // aguardando modificações nos arquivos
