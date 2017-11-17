@@ -28,7 +28,7 @@ gulp.task('sass-compile', function(){
 
 // passando os scripts para o dist
 gulp.task('script-compile', function(){
-  gulp.src('./dev/js/*.js')
+  gulp.src('./dev/js/**/*.js')
   .pipe(gulp.dest('./dist/js'));
 });
 
@@ -58,5 +58,5 @@ gulp.task('bootstrap', function(){
 gulp.task('watch', function(){
   gulp.watch('./dev/sass/main.scss', ['sass-compile']).on('change', browserSync.reload);
   gulp.watch('./dev/index.html', ['html-compile']).on('change', browserSync.reload);
-  gulp.watch('./dev/js/*.js', ['script-compile']).on('change', browserSync.reload);
+  gulp.watch('./dev/js/**/*.js', ['script-compile']).on('change', browserSync.reload);
 });
