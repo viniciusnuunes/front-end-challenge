@@ -56,7 +56,7 @@ gulp.task('bootstrap', function(){
 
 // aguardando modificações nos arquivos
 gulp.task('watch', function(){
-  gulp.watch('./dev/sass/main.scss', ['sass-compile']).on('change', browserSync.reload);
+  gulp.watch('./dev/sass/**/*.scss', ['sass-compile']).on('change', browserSync.reload);
   gulp.watch('./dev/index.html', ['html-compile']).on('change', browserSync.reload);
   gulp.watch('./dev/js/**/*.js', ['script-compile']).on('change', browserSync.reload);
 });

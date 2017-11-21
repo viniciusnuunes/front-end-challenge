@@ -53,8 +53,11 @@
     </nav>
 
     <div ng-controller="MyController">
-      <h1>The ID is {{greeting}}</h1>
-			<h1>The content is {{greeting}}</h1>
+      <ul>
+        <li ng-repeat="a in topArtists">
+          {{ a.name }}
+        </li>
+      </ul>
     </div>
 
   </body>

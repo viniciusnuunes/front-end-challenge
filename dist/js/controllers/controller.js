@@ -7,7 +7,7 @@ app.controller("MyController", function($scope, $http){
   // chart.getTopArtists
   $http.get(urlApi + 'method=chart.gettopartists&api_key=' + apiKey + '&format=json')
   .then(function(response) {
-  $scope.greeting = response.data;
+  $scope.topArtists = response.data.artists.artist;
   console.log(response);
   });
 });
