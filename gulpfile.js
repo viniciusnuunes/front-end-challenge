@@ -34,7 +34,7 @@ gulp.task('script-compile', function(){
 
 /* passando o html para o dist */
 gulp.task('html-compile', function(){
-  gulp.src('./dev/index.html')
+  gulp.src('./dev/**/*.html')
   .pipe(gulp.dest('./dist'));
 });
 
@@ -42,7 +42,8 @@ gulp.task('html-compile', function(){
 gulp.task('lib', function(){
   return gulp.src(['./node_modules/angular/angular.min.js',
                    './node_modules/jquery/dist/jquery.min.js',
-                   './node_modules/bootstrap/dist/js/bootstrap.min.js'])
+                   './node_modules/bootstrap/dist/js/bootstrap.min.js',
+                   './node_modules/angular-route/angular-route.js'])
   .pipe(concat('lib.js'))
   .pipe(gulp.dest('./dist/lib'));
 });
@@ -57,6 +58,6 @@ gulp.task('bootstrap', function(){
 // aguardando modificações nos arquivos
 gulp.task('watch', function(){
   gulp.watch('./dev/sass/**/*.scss', ['sass-compile']).on('change', browserSync.reload);
-  gulp.watch('./dev/index.html', ['html-compile']).on('change', browserSync.reload);
+  gulp.watch('./dev/**/*.html', ['html-compile']).on('change', browserSync.reload);
   gulp.watch('./dev/js/**/*.js', ['script-compile']).on('change', browserSync.reload);
 });

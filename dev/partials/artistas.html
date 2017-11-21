@@ -1,0 +1,16 @@
+<table class="table table-condensed" ng-controller="MyController">
+  <thead>
+    <th>Artista</th>
+    <th>Playcount</th>
+    <th>Listeners</th>
+    <th>Url</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="l in topArtists | orderBy : 'playcount'">
+      <td>{{ l.name }}</td>
+      <td>{{ l.playcount }}</td>
+      <td>{{ l.listeners }}</td>
+      <td>{{ l.url}}</td>
+    </tr>
+  </tbody>
+</table>
