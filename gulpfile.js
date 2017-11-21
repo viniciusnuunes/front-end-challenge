@@ -8,10 +8,11 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var browserSync = require('browser-sync');
+var imagemin = require('gulp-imagemin');
 
-gulp.task('default', ['server', 'lib', 'bootstrap', 'sass-compile', 'script-compile', 'html-compile', 'watch']);
+gulp.task('default', ['lib', 'bootstrap', 'sass-compile', 'script-compile', 'html-compile', 'watch', 'server']);
 
-gulp.task('server', function(){
+gulp.task('server', ['img-compress'], function(){
   browserSync.init({
     server: {
       baseDir: 'dist'
@@ -43,9 +44,15 @@ gulp.task('lib', function(){
   return gulp.src(['./node_modules/angular/angular.min.js',
                    './node_modules/jquery/dist/jquery.min.js',
                    './node_modules/bootstrap/dist/js/bootstrap.min.js',
-                   './node_modules/angular-route/angular-route.js'])
+                   './node_modules/angular-route/angular-route.min.js'])
   .pipe(concat('lib.js'))
   .pipe(gulp.dest('./dist/lib'));
+});
+
+gulp.task('img-compress', function(){
+  return gulp.src('./dev/img/*.png')
+  .pipe(imagemin())
+  .pipe(gulp.dest('./dist/img'));
 });
 
 gulp.task('bootstrap', function(){

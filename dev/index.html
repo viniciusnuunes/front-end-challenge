@@ -14,15 +14,16 @@
   <div class="container">
 
     <ul class="nav nav-tabs">
-      <li ng-class="{active: activetab == '/'}"><a href="/">Início</a></li>
-      <li ng-class="{active: activetab == '/artistas'}"><a href="/artistas">Artistas</a></li>
+      <li ng-class="{active: activetab == '/'}"><a href="#!">Início</a></li>
+      <li ng-class="{active: activetab == '/artistas'}"><a href="#!artistas">Artistas</a></li>
     </ul>
 
-    <div ng-view></div>
+    <ng-view></ng-view>
 
   </div>
   </body>
   <script src="./lib/lib.js"></script>
   <script src="./js/app.js"></script>
-  <script src="./js/controllers/controller.js"></script>
+  <script src="./js/controllers/top-artists-controller.js"></script>
+  <script src="./js/controllers/home-controller.js"></script>
 </html>

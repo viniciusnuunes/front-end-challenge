@@ -2,7 +2,9 @@ var apiKey = "ae1d9922136636e63bec4fb20441237b";
 var sharedSecret = "c598ef7b2c34d1b9735254cb8c0aaebb";
 var urlApi = "http://ws.audioscrobbler.com/2.0/?";
 
-app.controller("MyController", function($scope, $http){
+app.controller("TopArtistsController", function($scope, $http, $rootScope, $location){
+
+  $rootScope.activetab = $location.path();
 
   // chart.getTopArtists
   $http.get(urlApi + 'method=chart.gettopartists&api_key=' + apiKey + '&format=json')
