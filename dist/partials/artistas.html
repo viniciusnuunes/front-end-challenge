@@ -6,8 +6,8 @@
     <th>Url - Link</th>
   </thead>
   <tbody>
-    <tr ng-repeat="l in topArtists |  orderBy : 'playcount'">      
-      <td>{{ l.name }}</td>
+    <tr ng-repeat="l in topArtists | filter : procurar |  orderBy : 'listeners'">
+      <td><img ng-src="{{l.image['0']['#text']}}" alt="{{ l.name }}" title="{{ l.name }}"> {{ l.name }}</td>
       <td>{{ l.playcount }}</td>
       <td>{{ l.listeners }}</td>
       <td><a href="{{ l.url}}">Visitar</a></td>

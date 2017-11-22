@@ -9,7 +9,8 @@ app.controller("TopArtistsController", function($scope, $http, $rootScope, $loca
   // chart.getTopArtists
   $http.get(apiUrl + 'method=chart.gettopartists&api_key=' + apiKey + '&format=json')
   .then(function(response) {
-  $scope.topArtists = response.data.artists.artist;  
+  $scope.topArtists = response.data.artists.artist;
+  $scope.imgArtist = response.data.artists.artist["0"].image["0"]["#text"];  
   console.log(response);
   });
 });

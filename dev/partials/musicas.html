@@ -7,7 +7,7 @@
       <th>Url - Link</th>
     </thead>
     <tbody>
-      <tr ng-repeat="l in topMusics | orderBy : 'listeners'">
+      <tr ng-repeat="l in topMusics | filter : procurar | orderBy : 'listeners'">
         <td>{{ l.artist.name }}</td>
         <td>{{ l.name }}</td>
         <td>{{ l.playcount }}</td>
