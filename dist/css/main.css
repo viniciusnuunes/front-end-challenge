@@ -10,3 +10,6 @@ body {
   /* for Opera 9.5 */
   color: white;
   padding-top: 50px; }
+
+.navbar-brand {
+  pointer-events: none; }
