@@ -10,5 +10,6 @@ app.controller("TopArtistsController", function($scope, $http, $rootScope, $loca
   $http.get(apiUrl + 'method=chart.gettopartists&api_key=' + apiKey + '&format=json')
   .then(function(response) {
   $scope.topArtists = response.data.artists.artist;  
+  console.log(response);
   });
 });

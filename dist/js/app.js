@@ -11,5 +11,9 @@ app.config(function($routeProvider, $locationProvider) {
     templateUrl : './partials/artistas.html',
     controller : 'TopArtistsController'
   })
+  .when('/musicas', {
+    templateUrl : './partials/musicas.html',
+    controller : 'TopMusicsController'
+  })
   .otherwise({redirectTo: "/"});
 });

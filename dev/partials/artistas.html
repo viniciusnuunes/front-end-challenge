@@ -6,11 +6,11 @@
     <th>Url - Link</th>
   </thead>
   <tbody>
-    <tr ng-repeat="l in topArtists | orderBy : 'playcount'">
+    <tr ng-repeat="l in topArtists |  orderBy : 'playcount'">      
       <td>{{ l.name }}</td>
       <td>{{ l.playcount }}</td>
       <td>{{ l.listeners }}</td>
-      <td>{{ l.url}}</td>
+      <td><a href="{{ l.url}}">Visitar</a></td>
     </tr>
   </tbody>
 </table>

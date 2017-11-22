@@ -36,7 +36,7 @@ gulp.task('script-compile', function(){
 
 // Copiando o HTML
 gulp.task('html-compile', function(){
-  gulp.src('./dev/**/*.html')
+  gulp.src('./dev/**/**/*.html')
   .pipe(gulp.dest('./dist'));
 });
 
