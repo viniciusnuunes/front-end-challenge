@@ -9,7 +9,10 @@ body {
   -o-background-size: cover;
   /* for Opera 9.5 */
   color: white;
-  padding-top: 50px; }
+  padding-top: 70px; }
 
 .navbar-brand {
   pointer-events: none; }
+
+#pagination {
+  text-align: center; }

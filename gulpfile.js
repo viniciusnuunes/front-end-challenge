@@ -41,7 +41,7 @@ gulp.task('html-compile', function(){
 });
 
 // Concatenando as lib's JS e colocando em um arquivo
-gulp.task('lib', function(){
+gulp.task('lib', ['dirPaginate'], function(){
   return gulp.src(['./node_modules/angular/angular.min.js',
                    './node_modules/jquery/dist/jquery.min.js',
                    './node_modules/bootstrap/dist/js/bootstrap.min.js',
@@ -50,9 +50,14 @@ gulp.task('lib', function(){
   .pipe(gulp.dest('./dist/lib'));
 });
 
+gulp.task('dirPaginate', function(){
+  gulp.src('./node_modules/angular-utils-pagination/dirPagination.js')
+  .pipe(gulp.dest('./dist/lib'));
+})
+
 // Minificando, copiando e verificando se as imagens já estão minificadas no destino
 gulp.task('img-compress', function(){
-  return gulp.src('./dev/img/*.png')
+  return gulp.src(['./dev/img/*.png', './dev/img/*.jpg'])
   .pipe(changed('./dist/img'))
   .pipe(imagemin())
   .pipe(gulp.dest('./dist/img'));

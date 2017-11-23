@@ -1,18 +1,22 @@
 <table class="table table-condensed">
-    <thead>
-      <th>Artista</th>
-      <th>Música</th>
-      <th>Playcount</th>
-      <th>Listeners</th>
-      <th>Url - Link</th>
-    </thead>
-    <tbody>
-      <tr ng-repeat="l in topMusics | filter : procurar | orderBy : 'listeners'">
-        <td>{{ l.artist.name }}</td>
-        <td>{{ l.name }}</td>
-        <td>{{ l.playcount }}</td>
-        <td>{{ l.listeners }}</td>
-        <td><a href="{{ l.url }}">Visitar</a></td>
-      </tr>
-    </tbody>
-  </table>
+  <thead>
+    <th>Artista</th>
+    <th>Música</th>
+    <th>Playcount</th>
+    <th>Listeners</th>
+    <th>Url - Link</th>
+  </thead>
+  <tbody>
+    <tr dir-paginate="l in topMusics | itemsPerPage : 25 | filter : procurar | orderBy : 'listeners'">
+      <td><img class="img-rounded" ng-src="{{l.image['0']['#text']}}" alt="{{ l.name }}" title="{{ l.name }}"> {{ l.artist.name }}</td>
+      <td>{{ l.name }}</td>
+      <td>{{ l.playcount }}</td>
+      <td>{{ l.listeners }}</td>
+      <td><a href="{{ l.url }}">Visitar</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<div id="pagination">
+  <dir-pagination-controls direction-links="true" boundary-links="true"></dir-pagination-controls>
+</div>
