@@ -1,20 +1,29 @@
-<table class="table table-condensed">
-  <thead>
-    <th>Artista</th>
-    <th>Playcount</th>
-    <th>Listeners</th>
-    <th>Url - Link</th>
-  </thead>
-  <tbody>
-    <tr dir-paginate="l in topArtists | itemsPerPage : 10 | filter : procurar |  orderBy : 'listeners'">
-      <td><img class="img-rounded" ng-src="{{l.image['0']['#text']}}" alt="{{ l.name }}" title="{{ l.name }}"> {{ l.name }}</td>
-      <td>{{ l.playcount }}</td>
-      <td>{{ l.listeners }}</td>
-      <td><a href="{{ l.url}}">Visitar</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<div id="pagination">
-  <dir-pagination-controls direction-links="true" boundary-links="true"></dir-pagination-controls>
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title">Top Artistas</h3>    
+  </div>
+  <div class="panel-body">
+    <input type="text" class="form-control" data-action="filter" ng-model="procurar" placeholder="Filtrar resultados" />    
+  </div>
+  <table class="table table-condensed table-hover">
+    <thead>        
+      <th>Artista</th>
+      <th>Playcount</th>
+      <th>Listeners</th>
+      <th>Url - Link</th>
+    </thead>
+    <tbody>
+      <tr dir-paginate="l in topArtists | itemsPerPage : 10 | filter : procurar |  orderBy : 'listeners'">          
+        <td><img class="img-rounded" ng-src="{{l.image['0']['#text']}}" alt="{{ l.name }}" title="{{ l.name }}"> {{ l.name }}</td>
+        <td>{{ l.playcount }}</td>
+        <td>{{ l.listeners }}</td>
+        <td><a href="{{ l.url}}">Visitar</a></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div id="pagination">
+    <dir-pagination-controls direction-links="true" boundary-links="true"></dir-pagination-controls>
+  </div>
+  
 </div>

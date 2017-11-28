@@ -36,8 +36,12 @@ gulp.task('script-compile', function(){
 
 // Copiando o HTML
 gulp.task('html-compile', function(){
-  gulp.src('./dev/**/**/*.html')
+  gulp.src('./dev/*.html')
   .pipe(gulp.dest('./dist'));
+  gulp.src('./dev/partials/*.html')
+  .pipe(gulp.dest('./dist/partials'));
+  gulp.src('./dev/js/directives/navbar/*.html')
+  .pipe(gulp.dest('./dist/js/directives/navbar'));
 });
 
 // Concatenando as lib's JS e colocando em um arquivo
