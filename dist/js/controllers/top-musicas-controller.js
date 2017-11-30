@@ -1,13 +1,12 @@
-var apiKey = "ae1d9922136636e63bec4fb20441237b";
-var sharedSecret = "c598ef7b2c34d1b9735254cb8c0aaebb";
-var apiUrl = "http://ws.audioscrobbler.com/2.0/?";
-
 app.controller('TopMusicsController', function($scope, $http, $rootScope, $location){
     
+    // Utilizei este trecho para o angular reconhecer qual é a página ativa na navbar
     $rootScope.activetab = $location.path();
 
-    $http.get(apiUrl + 'method=chart.gettoptracks&api_key=' + apiKey + '&format=json')
+    $http.get($rootScope.apiUrl + 'method=chart.gettoptracks&api_key=' + $rootScope.apiKey + '&format=json')
     .then(function(response){
+
+        // Retornando o objeto musicas
         $scope.topMusics = response.data.tracks.track;
         console.log(response);
     })

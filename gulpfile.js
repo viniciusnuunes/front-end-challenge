@@ -13,6 +13,7 @@ var changed = require('gulp-changed');
 
 gulp.task('default', ['lib', 'bootstrap', 'sass-compile', 'script-compile', 'html-compile', 'watch', 'server']);
 
+// Iniciando o servidor com a pasta de destino
 gulp.task('server', ['img-compress'], function(){
   browserSync.init({
     server: {
@@ -39,9 +40,7 @@ gulp.task('html-compile', function(){
   gulp.src('./dev/*.html')
   .pipe(gulp.dest('./dist'));
   gulp.src('./dev/partials/*.html')
-  .pipe(gulp.dest('./dist/partials'));
-  gulp.src('./dev/js/directives/navbar/*.html')
-  .pipe(gulp.dest('./dist/js/directives/navbar'));
+  .pipe(gulp.dest('./dist/partials'));  
 });
 
 // Concatenando as lib's JS e colocando em um arquivo
@@ -75,6 +74,5 @@ gulp.task('bootstrap', function(){
 gulp.task('watch', function(){
   gulp.watch('./dev/sass/**/*.scss', ['sass-compile']).on('change', browserSync.reload);
   gulp.watch('./dev/**/*.html', ['html-compile']).on('change', browserSync.reload);
-  gulp.watch('./dev/**/**/**/*.js', ['script-compile']).on('change', browserSync.reload);
-  gulp.watch('./dev/js/directives/**/*.html', ['html-compile']).on('change', browserSync);
+  gulp.watch('./dev/**/**/**/*.js', ['script-compile']).on('change', browserSync.reload);  
 });
