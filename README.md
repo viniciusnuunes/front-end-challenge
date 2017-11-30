@@ -47,4 +47,4 @@ Usando a API pública do Last.fm (https://www.last.fm/api/intro) implemente um s
 - Semântica do HTML.
 - Em caso de dúvida, envie um email para [tecnologia@sejaspot.com.br](mailto:tecnologia@sejaspot.com.br).
 
-Boa sorte!
+Boa sorte.
